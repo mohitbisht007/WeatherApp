@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Responsive Weather UI</title>
+</head>
+
+<body class="bg-[#0C0C0C] text-white font-sans flex items-center justify-center min-h-screen p-4">
+  <section class="bg-[#1A1A1A] rounded-3xl shadow-lg p-6 sm:p-8 w-full max-w-6xl">
+    
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+      <div>
+        <h1 class="text-xl font-semibold">Brooklyn, New York, USA</h1>
+        <p class="text-gray-400 text-sm">Friday, January 4</p>
+      </div>
+      <input type="text" placeholder="Search city..." class="bg-[#2B2B2B] px-4 py-2 rounded-md text-sm w-full sm:w-64 focus:outline-none" />
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
+      
+      <!-- Left Block: Temp Info -->
+      <div class="w-full lg:w-1/3">
+        <h2 class="text-5xl sm:text-6xl font-bold">16°C</h2>
+        <p class="text-lg text-gray-300 mb-6">Storm with Rain</p>
+        <div class="flex gap-8">
+          <div>
+            <p class="text-sm text-gray-400">Wind</p>
+            <p class="text-lg font-semibold">2.4km/h</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400">Humidity</p>
+            <p class="text-lg font-semibold">70%</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Weather Icon -->
+      <div class="w-32 sm:w-40">
+        <img src="./Assest/storm_8936344.png" alt="Storm icon" class="w-full h-auto object-contain" />
+      </div>
+
+      <!-- Right Block: Weekly Forecast -->
+      <div class="bg-[#2B2B2B] p-4 rounded-xl w-full lg:w-1/3">
+        <div class="space-y-4">
+          <!-- Daily forecast item -->
+          <div class="flex justify-between items-center border-l-4 border-yellow-400 pl-2">
+            <div>
+              <p class="text-sm">Friday</p>
+              <p class="text-xs text-gray-400">Cloudy with rain</p>
+            </div>
+            <p>18°</p>
+          </div>
+          <div class="flex justify-between items-center pl-2">
+            <div>
+              <p class="text-sm">Saturday</p>
+              <p class="text-xs text-gray-400">Sunny</p>
+            </div>
+            <p>28°</p>
+          </div>
+          <div class="flex justify-between items-center pl-2">
+            <div>
+              <p class="text-sm">Sunday</p>
+              <p class="text-xs text-gray-400">Rain</p>
+            </div>
+            <p>22°</p>
+          </div>
+          <div class="flex justify-between items-center pl-2">
+            <div>
+              <p class="text-sm">Monday</p>
+              <p class="text-xs text-gray-400">Thunderstorm</p>
+            </div>
+            <p>17°</p>
+          </div>
+          <div class="flex justify-between items-center pl-2">
+            <div>
+              <p class="text-sm">Tuesday</p>
+              <p class="text-xs text-gray-400">Snow</p>
+            </div>
+            <p>2°</p>
+          </div>
+          <div class="flex justify-between items-center pl-2">
+            <div>
+              <p class="text-sm">Wednesday</p>
+              <p class="text-xs text-gray-400">Cloudy</p>
+            </div>
+            <p>12°</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hourly Forecast -->
+    <div class="mt-10 border-t border-gray-700 pt-6 overflow-x-auto">
+      <div class="grid grid-cols-4 sm:grid-cols-8 gap-4 text-sm text-gray-400 min-w-[500px]">
+        <!-- Each hour -->
+        <div class="flex flex-col items-center">
+          <p>08:00</p>
+          <p class="text-white font-semibold">9°</p>
+        </div>
+        <div class="flex flex-col items-center text-yellow-400">
+          <p>09:00</p>
+          <p class="text-white font-semibold">12°</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <p>10:00</p>
+          <p class="text-white font-semibold">8°</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <p>11:00</p>
+          <p class="text-white font-semibold">19°</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <p>12:00</p>
+          <p class="text-white font-semibold">25°</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <p>13:00</p>
+          <p class="text-white font-semibold">22°</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <p>14:00</p>
+          <p class="text-white font-semibold">18°</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <p>15:00</p>
+          <p class="text-white font-semibold">22°</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
