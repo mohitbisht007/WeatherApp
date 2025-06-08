@@ -29,6 +29,12 @@
           <p id="date" class="text-gray-400 text-sm"></p>
         </div>
         <div class="flex gap-2">
+          <button
+            id="current-location-btn"
+            class="ml-2 px-3 py-1 rounded bg-black text-white transition hover:bg-[#2B2B2B]"
+          >
+            Current Location
+          </button>
           <div class="relative w-full sm:w-64">
             <input
               type="text"
@@ -38,7 +44,7 @@
             />
             <ul
               id="search-history"
-              class=" absolute hidden top-full left-0 bg-black text-white list-none max-h-52 overflow-auto shadow-md z-50 w-full rounded-md mt-1"
+              class="absolute hidden top-full left-0 bg-black text-white list-none max-h-52 overflow-auto shadow-md z-50 w-full rounded-md mt-1"
             ></ul>
           </div>
           <button id="search-btn">
