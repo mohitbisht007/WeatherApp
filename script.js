@@ -1,7 +1,12 @@
+// API KEY for OpenWeatherMap
 const API_KEY = "88cd80ff127810bd1ff4f7ff9543b4e4";
-const searchBtn = document.getElementById("search-btn");
+
+// API URLS for OpenWeatherMap
 const CURRENT_API_URL = "https://api.openweathermap.org/data/2.5/weather?q";
 const WEEKLY_API_URL = "https://api.openweathermap.org/data/2.5/forecast?q";
+
+// DOM elements
+const searchBtn = document.getElementById("search-btn");
 const cityName = document.getElementById("city-Name");
 const currentTemp = document.getElementById("current-temp");
 const description = document.getElementById("description");
@@ -12,8 +17,11 @@ const weeklyDays = document.querySelectorAll(".days")
 const weeklyWeatherTemp = document.querySelectorAll(".weatherTemp");
 const time = document.querySelectorAll(".time");
 const hourlyTemp = document.querySelectorAll(".hourlyTemp")
+
+// Default city to show on first load
 const defaultCity = "delhi"
 
+// Format and display today's date
 const dateElement = document.getElementById("date");
 const currDate = new Date();
 const days = [
@@ -45,12 +53,15 @@ const formattedDate = `${days[currDate.getDay()]}, ${
 console.log(formattedDate);
 dateElement.innerHTML = formattedDate;
 
+// Convert Kelvin to Celsius
 const celsiusTemp = (kelvinTemp) => (kelvinTemp - 273.15).toFixed(1);
 
+// Build API URL for a city
 const apiURL = (url, city) => {
   return `${url}=${city}&appid=${API_KEY}`
 }
 
+// Fetch current weather for a city
 const fetchCurrWeather = async (city) => {
   const response = await fetch(apiURL(CURRENT_API_URL, city))
   const data = await response.json();
@@ -64,6 +75,7 @@ const fetchCurrWeather = async (city) => {
     };
 }
 
+// Fetch Weekly weather for a city
 const fetchWeeklyWeather = async(city) => {
   const response = await fetch(apiURL(WEEKLY_API_URL, city))
   const data = await response.json();
@@ -75,6 +87,7 @@ const fetchWeeklyWeather = async(city) => {
   }
 }
 
+// Update Current weather UI
 const updateCurrWeatherUI = (currData, city, country) => {
   cityName.textContent = `${city}, ${country}`;
   currentTemp.innerHTML = `${currData.temp}&deg;C`;
@@ -83,6 +96,7 @@ const updateCurrWeatherUI = (currData, city, country) => {
   humidity.textContent = `${currData.humidity}%`;
 }
 
+// Update Weekly weather UI
 const updateWeeklyUI = (list) => {
   const arrOfNext5Days = list.filter((data) =>
       data.dt_txt.includes("12:00:00")
@@ -96,6 +110,7 @@ const updateWeeklyUI = (list) => {
     }
 }
 
+// Update hourly weather UI
 const updateHourlyUI = (list) => {
   const hourlyData = list.slice(0, 8);
 
@@ -114,6 +129,7 @@ const updateHourlyUI = (list) => {
     }
 }
 
+// Changing Image UI with Weather Condition
 const changingImage = async (cityData) => {
   const image = document.getElementById("weatherImg")
   switch(cityData.des){
@@ -150,6 +166,7 @@ const changingImage = async (cityData) => {
   }
 }
 
+// Handle search button click
 const handleSearch = async () => {
    const searchedCity = document.getElementById("search-input").value.trim();
 
@@ -183,6 +200,8 @@ const handleSearch = async () => {
 
 searchBtn.addEventListener("click", handleSearch)
 
+
+// On page load, show last searched or default city
 window.addEventListener("DOMContentLoaded", async () => {
   const lastCity = localStorage.getItem("lastCity") || defaultCity;
 
@@ -203,6 +222,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 const searchHistoryUL = document.getElementById("search-history");
 const searchInput = document.getElementById("search-input")
 
+// Onclick Event for Last searchHistory
 searchInput.addEventListener("click", () => {
   const history = JSON.parse(localStorage.getItem("weatherSearchHistory"))
   searchHistoryUL.innerHTML = ""
